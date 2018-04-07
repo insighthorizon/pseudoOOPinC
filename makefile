@@ -6,9 +6,9 @@ test:
 build:
 #compiling into .o files
 	gcc main.c -o main.o -c;
-	gcc templateObj.c -o templateObj.o -c;
+	gcc object.c -o object.o -c;
 #linking into ELF binary
-	gcc main.o templateObj.o -o pseudoObjTest;
+	gcc main.o object.o -o pseudoObjTest;
 
 run:
 	./pseudoObjTest;
@@ -16,4 +16,4 @@ run:
 clean:
 	-rm pseudoObjTest;
 	-rm main.o;
-	-rm templateObj.o;
+	-rm object.o;

@@ -1,21 +1,19 @@
-/* Pseudo OOP template test */
-
-/* Includes */
+/* Include to get acces to the object */
+#include "object.h"
 #include <stdio.h>
-
-/* pseudoObject includes */
-/* Objects are created and initialised in included file */
-#define __MAIN__
-#include "templateObj.h"
-#undef __MAIN__
 
 int main()
 {
-  /* Test code here */
-  
-  
-  /* End of test code */
-  for(;getchar() != EOF;){;} // wait for EOF character
+  MY_object.displayValue();
+  printf("%d %d\n", MY_object.wFlag, MY_object.rFlag);
+
+  for(int i = 4; i > 0; i--)
+  {
+  MY_object.insertValue();
+  printf("%d %d\n", MY_object.wFlag, MY_object.rFlag);
+  MY_object.displayValue();
+  printf("%d %d\n", MY_object.wFlag, MY_object.rFlag);
+  printf("-------------------------------------\n");
+  }
   return 0;
 }
-
