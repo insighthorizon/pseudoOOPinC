@@ -20,11 +20,15 @@
 #undef COMMA
 #define COMMA ,
 
-#define INHERIT(X) BUILDER_MACROS__(X) /* you have to tell what builders to inherit */
+/* test.h object inherits from parrents macros.h and writers.h */
+/* you have to tell what builders to inherit */
+#define INHERIT_TEST__(X) \
+  BUILDER_WRITERS__(X)\
+  BUILDER_MACROS__(X)
 
-/* YOU have to give unique builder name (after the class) */
+/* YOU have to give unique builder and inherit  name (after the class) */
 #define BUILDER_TEST__(MORPH) \
-  INHERIT(MORPH)  /* commen can be there, not after the blackslash */ \
+  INHERIT_TEST__(MORPH)  /* commen can be there, not after the blackslash */ \
   MORPH( e, f ) \
   MORPH( g, h )
 
