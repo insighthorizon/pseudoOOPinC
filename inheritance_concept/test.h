@@ -37,14 +37,3 @@
 #define MORPHER1(X, Y) Y X
 
 BUILDER(MORPHER1)
-
-  
-
-
-
-  /* Notes to polymorphism concept */
-  /* Object arguments can be passed by special callback function (implemented with function pointer)
-     that acts like argument wraper,
-     this callback would passed information about data type and data itself,
-     this way object can have different behaviour for different type of arguments */
-
