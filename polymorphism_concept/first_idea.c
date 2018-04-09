@@ -9,22 +9,31 @@ typedef struct{ /* Float polytype definition */
   #define CREATE_FLOAT(NAME, INIT_VALUE) \
   float_poly_t NAME = (float_poly_t){0x00000001, INIT_VALUE};
   
-int read_something(int *something)
+/* all functions have to be void and their outpud passed to be also via pointers */
+void read_something(int *something, int *output)
 {
-  if((*something) == 0x0000001)
+  if((*something) == 0x0000001) 
+    /* later todo switch instead of ifs and can use enum for the identifier */
+    /* later TODO lookup table that 0x000001 ... 
+    ... function pointer to function implementing  void float_poly_operate(char i_or_o, int *x, float output)
+                                                             if  (i_or_o)
+                                                             return ((float_poly_t*)x)->data; //-for inputs 
+                                                             else ((float_poly_t*)x)->data = output //-for outputs*/
   {
-    float_poly_t temp = (float_poly_t*)something;
-    return (float)something->data;
+    if((*output) ==0x0000001)
+    {
+    ((float_poly_t*)output)->data = ((float_poly_t*)something)->data;
+    }
   }
-  printf("Unidentified type!\n");
+  printf("error!\n");
   return 1;
 }
 
 int main(void)
 {
    CREATE_FLOAT(myFloat, 10)
-   float x;
-   x = read_something(&myFloat); 
+   CREATE_FLOAT(x, 0)
+  read_something(&myFloat, &x); 
   printf("%f\n", x);
    
   return 0;
