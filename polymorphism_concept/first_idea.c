@@ -38,7 +38,7 @@ int main(void)
 {
   CREATE_FLOAT(myFloat, 10.864)
   CREATE_FLOAT(x, 0.8)
-  volatile int result =  read_something((&myFloat), (&x)); 
+  (void) read_something((&myFloat), (&x)); 
   printf("%f\n", x.data);
    
   return 0;
