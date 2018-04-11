@@ -1,60 +1,88 @@
+/* AS very last think maybe implement veryfication of argument - something like
+   if(second char is given value also) - to verify that we past right address and not something random */
+
 #include <stdio.h>
 
+enum container_types {INT_t = 1, FLOAT_t, DOUBLE_t};
 
-#define DOUBLE(X) {0xFF, 0x01, X}
+#define INT_c(X) ((int_container_t){INT_t, X}) /* container macro */
+#define INT_pt(X) {.i_container = INT_c(X)} /* polytype macro */
 
+#define FLOAT_c(X) ((float_container_t){FLOAT_t, X})
+#define FLOAT_pt(X) {.f_container = FLOAT_c(X)}
 
-#ifdef __GNUC__ /* without packed attribute dont even compile - would not work */
-typedef struct __attribute__((packed)){
-  unsigned char a;
-  unsigned char b;
-  double c;
-} reap_double_t;
-#endif
-
-
-reap_double_t double_container = 
-  (reap_double_t){0xFF, 0x01, 358.488}; 
+#define DOUBLE_c(X) ((double_container_t){DOUBLE_t, X})
+#define DOUBLE_pt(X) {.d_container = DOUBLE_c(X)}
 
 
 
 
-int crunch_data(unsigned char *x){
-  printf("%d\n", *x);
-  printf("%d\n", *(x+1));
-  printf("%f\n", *((double*)(x+2)));  
+typedef struct{
+  unsigned short identifier;
+  int data;
+} int_container_t;
+typedef struct{
+  unsigned short indentifier;
+  float data;
+} float_container_t;
+typedef struct{
+  unsigned short identifier;
+  double data;
+} double_container_t;
 
-  return 0;
+typedef union{
+  int_container_t i_container;
+  float_container_t f_container;
+  double_container_t d_container;
+/*int sheeet[128];*/
+} polytype_t;
+
+/* array of function pointers of extraction of any data type from polytype container */
+
+
+
+
+
+polytype_t my_polyVar = DOUBLE_pt(7.48);
+
+double_container_t my_double = DOUBLE_c(5.25); 
+
+
+
+
+polytype_t crunch_data(polytype_t x_interface){
+unsigned short identifier = *(unsigned short*)&x_interface;
+
+printf("Identifier: %d\n", identifier);
+if((*((unsigned short*)&x_interface)) == DOUBLE_t){
+/* Shadow the interface */
+double x = (double)x_interface.d_container.data;
+/* user code */
+x = 3*x;
+printf("Data: %f\n", x);
+/* end of user code */
+/* return values back to the interface */
+x_interface.d_container.data = x;
+}
+
+return x_interface;
 }
 
 
 
 int main(void)
 {
-  // (*(double*)(polyContainer+2)) = 3.14; 
-
-
-  /*
-  
-  printf("%d\n", *((unsigned char*)&polyContainer));
-  printf("%d\n", *(((unsigned char*)&polyContainer+1)));
-  printf("%f\n", (*(double*)(((unsigned char*)&polyContainer+2))));
-
-  for(int i = 0; i < sizeof(double); i++)
-  {
-    printf("0x%04x,", *(((unsigned char*)(&polyContainer)+2 + i)));
-  }
-  printf("\n");
-  printf("%04x\n", *(((unsigned char*)(&polyContainer)+2+sizeof(double))));
-  */
-
+polytype_t polyVar2;
+polytype_t polyVar3 = DOUBLE_pt(184.48);
 
   printf("-----\n");
-  (void)crunch_data((unsigned char*)&((reap_double_t){0x0F,0x10, 3.45})); // MACRO(DOUBLE(3.45))
-  (void)crunch_data((unsigned char*)&double_container); //pack this into macro MACRO(double_container)
-
-  /* at the end first idea with structure concept should be used with this argument inserting above - MACRO(DOUBLE(...)) */
-
+(void)crunch_data((polytype_t)DOUBLE_pt(35.35));
+polyVar2 = crunch_data(my_polyVar); 
+printf("%f\n", (double)polyVar2.d_container.data);
+printf("%d\n", sizeof(polyVar2));
+printf("%d\n", sizeof(my_polyVar));
+printf("%d\n", sizeof(polytype_t));
+printf("%d\n", sizeof(polyVar3));
   
   return 0;
 }
