@@ -1,47 +1,39 @@
 #include <stdio.h>
 
-static int x = 10;
+/* OBJECT structure TYPEdef */
+typedef struct{
+  /* Global variables defined by user */
+  int globVar1;
+  /* Pointers to global functions */
+  void (*setVal1)(int val);
+  void (*setVal2)(int val);
+  void (*setVal3)(int val);
+  int (*getVal1)(void);
+  int (*getVal2)(void);
+  int (*getVal3)(void);
+  void (*useGlobVars1)(int x);
+  int (*useGlobVars2)(void);
+}object1_t;
 
-int *capsule_access(void)
-{
-  static int capsuler = 10;
-  return &capsuler;
-}
-
-int abuse(void)
-{
-  static int *abused = (int*)0;
-  if(abused == 0) { abused = capsule_access(); }
-  int temp = *abused;
-  (*abused)++;
-  return temp;
-}
-
-int main(void)
-{
-  printf("%d\n", abuse());
-  printf("%d\n", abuse());
-  printf("%d\n", abuse());
-  printf("%d\n", abuse());
-  return 0;
-}
-
+/* Creating the object structure - uninitialized instance structure */
+object1_t object1_instance1;
+object1_t object1_instance2;
 
 /* Private variables implementations - for all instances of object */
 typedef struct{
   int value1;
   int value2;
   int value3;
-} private_vars_container_t;
+} obj1_privates_t;
 /*  Private variables definition for actual object instances - separatedly */
-private_vars_container_t *instance1_privatesACCESS(void)
+obj1_privates_t *obj1_inst1_privatesACCESS(void)
 {
-  static private_vars_container_t privates = (private_vars_container_t){0,1,209};
+  static obj1_privates_t privates = (obj1_privates_t){0,1,209};
   return &privates;
 }
-private_vars_container_t *instance2_privatesACCESS(void)
+obj1_privates_t *obj1_inst2_privatesACCESS(void)
 {
-  static private_vars_container_t privates = (private_vars_container_t){0,1,209};
+  static obj1_privates_t privates = (obj1_privates_t){0,1,209};
   return &privates;
 }
 
@@ -51,53 +43,154 @@ private_vars_container_t *instance2_privatesACCESS(void)
 
 
 /* Public function implementations */
-void setVal1(int val, private_vars_container_t *instance_privates)
+// globals - globals of own instance of object
+// privates - privates of own instance of object
+void obj1_setVal1(object1_t *globals, obj1_privates_t *privates,/*Here start user input variables*/ int val)
 {
-  instance_privates->value1 = val;
+  /* USER code for FUNCTION BODY starts here */
+  privates->value1 = val;
+  /* USER code for FUNCTION BODY ends here */
 }
-void setVal2(int val, private_vars_container_t *instance_privates)
+void obj1_setVal2(object1_t *globals, obj1_privates_t *privates,/*Here start user input variables*/ int val)
 {
-  instance_privates->value2 = val;
+  /* USER code for FUNCTION BODY starts here */
+  privates->value2 = val;
+  /* USER code for FUNCTION BODY ends here */
 }
-void setVal3(int val, private_vars_container_t *instance_privates)
+void obj1_setVal3(object1_t *globals, obj1_privates_t *privates,/*Here start user input variables*/ int val)
 {
-  instance_privates->value3 = val;
+  /* USER code for FUNCTION BODY starts here */
+  privates->value3 = val;
+  /* USER code for FUNCTION BODY ends here */
+}
+int obj1_getVal1(object1_t *globals, obj1_privates_t *privates)
+{
+  /* USER code for FUNCTION BODY starts here */  
+  return privates->value1;
+  /* USER code for FUNCTION BODY ends here */  
+}
+int obj1_getVal2(object1_t *globals, obj1_privates_t *privates)
+{
+  /* USER code for FUNCTION BODY starts here */  
+  return privates->value2;
+  /* USER code for FUNCTION BODY ends here */  
+}
+int obj1_getVal3(object1_t *globals, obj1_privates_t *privates)
+{
+  /* USER code for FUNCTION BODY starts here */  
+  return privates->value3;
+  /* USER code for FUNCTION BODY ends here */  
+}
+void obj1_useGlobVars1(object1_t *globals, obj1_privates_t *privates,/*Here start user input variables*/ int x)
+{
+  globals->globVar1 = x;
+}
+int obj1_useGlobVars2(object1_t *globals, obj1_privates_t *privates)
+{
+  return globals->globVar1;
 }
 /*   Public function wrappers - with reference to given private instance */
-void instance1_setVal1(int val)
+void wrapperObj1_inst1_setVal1(int val)
 {
-  static private_vars_container_t *priv = (private_vars_container_t*)0;
-  if(priv == 0) { priv = instance1_privatesACCESS(); }
-  setVal1(val, priv);
+  static obj1_privates_t *priv = (obj1_privates_t*)0;
+  if(priv == 0) { priv = obj1_inst1_privatesACCESS(); }
+  return obj1_setVal1(&object1_instance1, priv, val);
 }
-void instance1_setVal2(int val)
+void wrapperObj1_inst1_setVal2(int val)
 {
-  static private_vars_container_t *priv = (private_vars_container_t*)0;
-  if(priv == 0) { priv = instance1_privatesACCESS(); }
-  setVal2(val, priv);
+  static obj1_privates_t *priv = (obj1_privates_t*)0;
+  if(priv == 0) { priv = obj1_inst1_privatesACCESS(); }
+  return obj1_setVal2(&object1_instance1, priv, val);
 }
-void instance1_setVal3(int val)
+void wrapperObj1_inst1_setVal3(int val)
 {
-  static private_vars_container_t *priv = (private_vars_container_t*)0;
-  if(priv == 0) { priv = instance1_privatesACCESS(); }
-  setVal3(val, priv);
+  static obj1_privates_t *priv = (obj1_privates_t*)0;
+  if(priv == 0) { priv = obj1_inst1_privatesACCESS(); }
+  return obj1_setVal3(&object1_instance1, priv, val);
+}
+int wrapperObj1_inst1_getVal1(void)
+{
+  static obj1_privates_t *priv = (obj1_privates_t*)0;
+  if(priv == 0) { priv = obj1_inst1_privatesACCESS(); }
+  return obj1_getVal1(&object1_instance1, priv);
+}
+int wrapperObj1_inst1_getVal2(void)
+{
+  static obj1_privates_t *priv = (obj1_privates_t*)0;
+  if(priv == 0) { priv = obj1_inst1_privatesACCESS(); }
+  return obj1_getVal2(&object1_instance1, priv);
+}
+int wrapperObj1_inst1_getVal3(void)
+{
+  static obj1_privates_t *priv = (obj1_privates_t*)0;
+  if(priv == 0) { priv = obj1_inst1_privatesACCESS(); }
+  return obj1_getVal3(&object1_instance1, priv);
+}
+void wrapperObj1_inst1_useGlobVars1(int x)
+{
+  static obj1_privates_t *priv = (obj1_privates_t*)0;
+  if(priv == 0) { priv = obj1_inst1_privatesACCESS(); }
+  return obj1_useGlobVars1(&object1_instance1, priv, x);
+}
+int wrapperObj1_inst1_useGlobVars2(void)
+{
+  static obj1_privates_t *priv = (obj1_privates_t*)0;
+  if(priv == 0) { priv = obj1_inst1_privatesACCESS(); }
+  return obj1_useGlobVars2(&object1_instance1, priv);
 }
 
-void instance2_setVal1(int val)
+void wrapperObj1_inst2_setVal1(int val)
 {
-  static private_vars_container_t *priv = (private_vars_container_t*)0;
-  if(priv == 0) { priv = instance2_privatesACCESS(); }
-  setVal1(val, priv);
+  static obj1_privates_t *priv = (obj1_privates_t*)0;
+  if(priv == 0) { priv = obj1_inst2_privatesACCESS(); }
+  return obj1_setVal1(&object1_instance2, priv, val);
 }
-void instance2_setVal2(int val)
+void wrapperObj1_inst2_setVal2(int val)
 {
-  static private_vars_container_t *priv = (private_vars_container_t*)0;
-  if(priv == 0) { priv = instance2_privatesACCESS(); }
-  setVal2(val, priv);
+  static obj1_privates_t *priv = (obj1_privates_t*)0;
+  if(priv == 0) { priv = obj1_inst2_privatesACCESS(); }
+  return obj1_setVal2(&object1_instance2, priv, val);
 }
-void instance2_setVal3(int val)
+void wrapperObj1_inst2_setVal3(int val)
 {
-  static private_vars_container_t *priv = (private_vars_container_t*)0;
-  if(priv == 0) { priv = instance2_privatesACCESS(); }
-  setVal3(val, priv);
+  static obj1_privates_t *priv = (obj1_privates_t*)0;
+  if(priv == 0) { priv = obj1_inst2_privatesACCESS(); }
+  return obj1_setVal3(&object1_instance2, priv, val);
+}
+int wrapperObj1_inst2_getVal1(void)
+{
+  static obj1_privates_t *priv = (obj1_privates_t*)0;
+  if(priv == 0) { priv = obj1_inst2_privatesACCESS(); }
+  return obj1_getVal1(&object1_instance2, priv);
+}
+int wrapperObj1_inst2_getVal2(void)
+{
+  static obj1_privates_t *priv = (obj1_privates_t*)0;
+  if(priv == 0) { priv = obj1_inst2_privatesACCESS(); }
+  return obj1_getVal2(&object1_instance2, priv);
+}
+int wrapperObj1_inst2_getVal3(void)
+{
+  static obj1_privates_t *priv = (obj1_privates_t*)0;
+  if(priv == 0) { priv = obj1_inst2_privatesACCESS(); }
+  return obj1_getVal3(&object1_instance2, priv);
+}
+void wrapperObj1_inst2_useGlobVars1(int x)
+{
+  static obj1_privates_t *priv = (obj1_privates_t*)0;
+  if(priv == 0) { priv = obj1_inst2_privatesACCESS(); }
+  return obj1_useGlobVars1(&object1_instance2, priv, x);
+}
+int wrapperObj1_inst2_useGlobVars2(void)
+{
+  static obj1_privates_t *priv = (obj1_privates_t*)0;
+  if(priv == 0) { priv = obj1_inst2_privatesACCESS(); }
+  return obj1_useGlobVars2(&object1_instance2, priv);
+}
+
+
+int main(void)
+{
+
+  return 0;
 }
