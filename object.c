@@ -18,8 +18,8 @@
 static void printInteger(long x);
 static int scanInteger(void);
 /* public */
-void MY_objectinsertValue(void);
-void MY_objectdisplayValue(void);
+void MY_objectInsertValue(void);
+void MY_objectDisplayValue(void);
 
 /* Private variable definitions */
 /* Private variables must be created and handled extra for every object (instance) */
@@ -30,14 +30,16 @@ typedef struct{
 
 static private_container MY_object_private_container = (private_container){0, 0};
 
+
 #define OBJECT_INSTANCE MY_object
 #define GET_PRIV(X) X ## _private_container
 #define INDIRECT_GET_PRIV(X) GET_PRIV(X)
 #define PRIV INDIRECT_GET_PRIV(OBJECT_INSTANCE)
 
+
 /* Object instance definition 
    - contains creation of global variables */
-object_t MY_object = (object_t){0, 0, MY_objectinsertValue, MY_objectdisplayValue};
+object_t MY_object = (object_t){0, 0, MY_objectInsertValue, MY_objectDisplayValue};
 
 /* Private function definitions */
 void printInteger(long x)
@@ -53,7 +55,7 @@ int scanInteger(void)
 }
 
 /* Actual public function definitions */
-void MY_objectinsertValue(void)
+void MY_objectInsertValue(void)
 {
   static int x = 0;
   PRIV.value = scanInteger();
@@ -62,7 +64,7 @@ void MY_objectinsertValue(void)
   MY_object.rFlag = 0;
 }
 
-void MY_objectdisplayValue(void)
+void MY_objectDisplayValue(void)
 {
   printInteger(PRIV.value);
   printInteger(PRIV.cumulative);

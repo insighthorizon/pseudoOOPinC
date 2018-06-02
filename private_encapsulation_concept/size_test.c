@@ -20,7 +20,7 @@ typedef struct{
 int main()
 {
   
-t is at least 64 bits in size. Specifi
+  //t is at least 64 bits in size. Specifi
   int* int_pointer;    // an integer pointer
   float* float_pointer;  //a float pointer
   char* char_pointer;   //a character pointer
