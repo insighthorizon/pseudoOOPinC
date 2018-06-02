@@ -34,7 +34,7 @@ typedef union{
   int_container_t i_container;
   float_container_t f_container;
   double_container_t d_container;
-/*int sheeet[128];*/
+  int *sheeet;
 } polytype_t;
 
 /* array of function pointers of extraction of any data type from polytype container */
@@ -80,7 +80,7 @@ polytype_t polyVar3 = DOUBLE_pt(184.48);
 polyVar2 = crunch_data(my_polyVar); 
 printf("%f\n", (double)polyVar2.d_container.data);
 printf("%d\n", sizeof(polyVar2));
-printf("%d\n", sizeof(my_polyVar));
+printf("%d\n", sizeof(double));
 printf("%d\n", sizeof(polytype_t));
 printf("%d\n", sizeof(polyVar3));
   
