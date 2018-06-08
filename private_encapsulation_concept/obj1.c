@@ -2,7 +2,7 @@
 #include <stdio.h>
 
 #define __OBJ1_C__ /* macro that says we are inside of class named obj1 */
-#include "capsule.h"
+#include "obj1.h"
 #undef __OBJ1_C__
 
 /* Creating the object structure - uninitialized instance structure */
@@ -207,10 +207,4 @@ void pubWrapperObj1_inst2_usePrivFun(void)
   static obj1_privates_T *priv = (obj1_privates_T*)0;
   if(priv == 0) { priv = obj1_inst2_privatesACCESS(); }
   return obj1_usePrivFun(&obj1_instance2, priv);
-}
-
-int main(void)
-{
-
-  return 0;
 }

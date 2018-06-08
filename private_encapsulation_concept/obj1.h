@@ -67,7 +67,7 @@ int pubWrapperObj1_inst2_getVal3(void);
 void pubWrapperObj1_inst2_usePubVars1(int x);
 int pubWrapperObj1_inst2_usePubVars2(void);
 void pubWrapperObj1_inst2_usePrivFun(void);
-#elif
+#else
 /* Extern to give access to objects */
 extern obj1_publics_T obj1_instance1;
 extern obj1_publics_T obj1_instance2;

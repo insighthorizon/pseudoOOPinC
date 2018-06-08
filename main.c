@@ -1,6 +1,7 @@
 /* Include to get acces to the object */
 #include "object.h"
 #include <stdio.h>
+#include <stdlib.h>
 
 int main()
 {
@@ -15,5 +16,8 @@ int main()
   printf("%d %d\n", MY_object.wFlag, MY_object.rFlag);
   printf("-------------------------------------\n");
   }
+
+  system("pause");
+  
   return 0;
 }
