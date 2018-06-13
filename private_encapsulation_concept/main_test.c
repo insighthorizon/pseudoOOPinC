@@ -35,7 +35,7 @@ int main(void)
 #ifdef _WIN32
   system("pause");
 #else
-  printf("\nEnd of program. Pres ENTER...\n");
+  printf("\nEnd of program. Press ENTER...\n");
   getchar();
 #endif
   
