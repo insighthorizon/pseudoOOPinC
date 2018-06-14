@@ -23,3 +23,18 @@ int main(void)
   
   return 0;
 }
+
+
+/*
+  // This is how you can store anything into double...
+  double a = 1000000;
+  int b = 128;
+  *(unsigned char*)(&a) = 256;
+
+  printf("%d\n", *(unsigned char*)(&a));
+  printf("%d\n", *(int*)(&a));
+  printf("%f\n", *(float*)(&a));
+  printf("%f\n", *(double*)(&a));
+
+  *(int*)(&a) = (int)(&b); // all pointers are size of integer
+  printf("b is %d\n", *(int*)(*(int*)(&a)) ); */
