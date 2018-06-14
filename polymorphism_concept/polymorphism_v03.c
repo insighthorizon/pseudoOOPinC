@@ -12,7 +12,7 @@ typedef signed long long s64;
 typedef unsigned long long u64;
 typedef float f32;
 typedef double f64;
-            //typedef long double f96; // in MINGW64 was sizeof(long double) 12 ... ???
+            //typedef long double f96/f128; // in MINGW64 was sizeof(long double) 12 , in linux long double has 16 bytes
 /* User defined data types (data structures like structures, arrays, buffers, linked lists...) */
 typedef struct {
   int a;
@@ -21,7 +21,7 @@ typedef struct {
 typedef struct {
   int size;
   int *data; // type of array is defined by the typeIdentifier
-}ArrayWrapper_t;
+}arrayWrapper_t;
 /* List of all data types */
 typedef enum {
   TYPE_s8 = 9999, // High values to make less probable the  accidental input of type into the polymophic functions by programmer 
@@ -45,40 +45,42 @@ typedef struct {
 }polyVarInterface_t;
 /* Macros to define and initialize polymorphic variables */
 #define OOC_SIGNED_CHAR8(NAME, INIT_VALUE) \
-  s8 polyVar_storage_##NAME = INIT_VALUE; \
-  polyVarInterface_t NAME = (polyVarInterface_t){TYPE_##s8, (int*)&polyVar_storage_##NAME};
+  s8 s8_polyVar_storage_##NAME = INIT_VALUE; \
+  polyVarInterface_t NAME = (polyVarInterface_t){TYPE_##s8, (int*)&s8_polyVar_storage_##NAME};
 #define OOC_UNSIGNED_CHAR8(NAME, INIT_VALUE) \
-  u8 polyVar_storage_##NAME = INIT_VALUE; \
-  polyVarInterface_t NAME = (polyVarInterface_t){TYPE_##u8, (int*)&polyVar_storage_##NAME};
+  u8 u8_polyVar_storage_##NAME = INIT_VALUE; \
+  polyVarInterface_t NAME = (polyVarInterface_t){TYPE_##u8, (int*)&u8_polyVar_storage_##NAME};
 #define OOC_SIGNED_SHORT16(NAME, INIT_VALUE) \
-  s16 polyVar_storage_##NAME = INIT_VALUE; \
-  polyVarInterface_t NAME = (polyVarInterface_t){TYPE_##s16, (int*)&polyVar_storage_##NAME};
+  s16 s16_polyVar_storage_##NAME = INIT_VALUE; \
+  polyVarInterface_t NAME = (polyVarInterface_t){TYPE_##s16, (int*)&s16_polyVar_storage_##NAME};
 #define OOC_UNSIGNED_SHORT16(NAME, INIT_VALUE) \
-  u16 polyVar_storage_##NAME = INIT_VALUE; \
-  polyVarInterface_t NAME = (polyVarInterface_t){TYPE_##u16, (int*)&polyVar_storage_##NAME};
+  u16 u16_polyVar_storage_##NAME = INIT_VALUE; \
+  polyVarInterface_t NAME = (polyVarInterface_t){TYPE_##u16, (int*)&u16_polyVar_storage_##NAME};
 #define OOC_SIGNED_INT32(NAME, INIT_VALUE) \
-  s32 polyVar_storage_##NAME = INIT_VALUE; \
-  polyVarInterface_t NAME = (polyVarInterface_t){TYPE_##s32, (int*)&polyVar_storage_##NAME};
+  s32 s32_polyVar_storage_##NAME = INIT_VALUE; \
+  polyVarInterface_t NAME = (polyVarInterface_t){TYPE_##s32, (int*)&s32_polyVar_storage_##NAME};
 #define OOC_UNSIGNED_INT32(NAME, INIT_VALUE) \
-  u32 polyVar_storage_##NAME = INIT_VALUE; \
-  polyVarInterface_t NAME = (polyVarInterface_t){TYPE_##u32, (int*)&polyVar_storage_##NAME};
+  u32 u32_polyVar_storage_##NAME = INIT_VALUE; \
+  polyVarInterface_t NAME = (polyVarInterface_t){TYPE_##u32, (int*)&u32_polyVar_storage_##NAME};
 #define OOC_SIGNED_LONGLONG64(NAME, INIT_VALUE) \
-  s64 polyVar_storage_##NAME = INIT_VALUE; \
-  polyVarInterface_t NAME = (polyVarInterface_t){TYPE_##s64, (int*)&polyVar_storage_##NAME};
+  s64 s64_polyVar_storage_##NAME = INIT_VALUE; \
+  polyVarInterface_t NAME = (polyVarInterface_t){TYPE_##s64, (int*)&s64_polyVar_storage_##NAME};
 #define OOC_UNSIGNED_LONGLONG64(NAME, INIT_VALUE) \
-  u64 polyVar_storage_##NAME = INIT_VALUE; \
-  polyVarInterface_t NAME = (polyVarInterface_t){TYPE_##u64, (int*)&polyVar_storage_##NAME};
+  u64 u64_polyVar_storage_##NAME = INIT_VALUE; \
+  polyVarInterface_t NAME = (polyVarInterface_t){TYPE_##u64, (int*)&u64_polyVar_storage_##NAME};
 #define OOC_FLOAT32(NAME, INIT_VALUE) \
-  f32 polyVar_storage_##NAME = INIT_VALUE; \
-  polyVarInterface_t NAME = (polyVarInterface_t){TYPE_##f32, (int*)&polyVar_storage_##NAME};
+  f32 f32_polyVar_storage_##NAME = INIT_VALUE; \
+  polyVarInterface_t NAME = (polyVarInterface_t){TYPE_##f32, (int*)&f32_polyVar_storage_##NAME};
 #define OOC_DOUBLE64(NAME, INIT_VALUE)	   \
-  f64 polyVar_storage_##NAME = INIT_VALUE; \
-  polyVarInterface_t NAME = (polyVarInterface_t){TYPE_##f64, (int*)&polyVar_storage_##NAME};
+  f64 f64_polyVar_storage_##NAME = INIT_VALUE; \
+  polyVarInterface_t NAME = (polyVarInterface_t){TYPE_##f64, (int*)&f64_polyVar_storage_##NAME};
 #define OOC_MYSTRUCT_T(NAME, INIT_VALUE1, INIT_VALUE2) /* Multiple init values (non-scalar type)*/ \
-  myStruct_t polyVar_storage_##NAME = (myStruct_t){INIT_VALUE1, INIT_VALUE2};		\
-  polyVarInterface_t NAME = (polyVarInterface_t){TYPE_##myStruct_t, (int*)&polyVar_storage_##NAME};
-#define OOC_UNSIGNED_CHAR8_ARRAY(NAME, SIZE, INIT_VALUES... ) // needs to be variadic macro
-
+  myStruct_t myStruct_t_polyVar_storage_##NAME = (myStruct_t){INIT_VALUE1, INIT_VALUE2};		\
+  polyVarInterface_t NAME = (polyVarInterface_t){TYPE_##myStruct_t, (int*)&myStruct_t_polyVar_storage_##NAME};
+#define OOC_UNSIGNED_CHAR8_ARRAY(NAME, SIZE, INIT_VALUES... ) /* Needs to be variadic macro */ \
+  u8 u8array_t_polyVar_storage_##NAME[SIZE] = {INIT_VALUES}; \
+  arrayWrapper_t arrayWrapper_t_polyVar_wrapper_##NAME = (arrayWrapper_t){SIZE, (int*)&u8array_t_polyVar_storage_##NAME}; \
+  polyVarInterface_t NAME = (polyVarInterface_t){TYPE_##u8array_t, (int*)&arrayWrapper_t_polyVar_wrapper_##NAME};
 
 int polymorphicFun(polyVarInterface_t x) // Example how to handle all the variants of the data type of variable
 {
@@ -106,10 +108,10 @@ int polymorphicFun(polyVarInterface_t x) // Example how to handle all the varian
       printf("This is unsigned int: %d\n", *(u32*)x.data);
       break;      
     case TYPE_s64:
-      printf("This is signed long long: %ld\n", *(s64*)x.data);
+      printf("This is signed long long: %lld\n", *(s64*)x.data);
       break;
     case TYPE_u64:
-      printf("This is unsigned long long: %ld\n", *(u64*)x.data);
+      printf("This is unsigned long long: %lld\n", *(u64*)x.data);
       break;
     case TYPE_f32:
       printf("This is float: %f\n", *(f32*)x.data);
@@ -120,6 +122,17 @@ int polymorphicFun(polyVarInterface_t x) // Example how to handle all the varian
     case TYPE_myStruct_t:
       printf("This is my struct: %d, %d\n", ((myStruct_t*)x.data)->a, ((myStruct_t*)x.data)->b);
       break;
+    case TYPE_u8array_t:
+      {
+      u32 u32_temp_size = ((arrayWrapper_t*)x.data)->size;
+      printf("This is array of %d unsigned chars:\n", u32_temp_size);
+      for(int i = 0; i < u32_temp_size; i++)
+	{
+	  printf("%d", ((char*)((arrayWrapper_t*)x.data)->data)[i]);
+	}
+      printf("\n");
+      }
+      break;
     }
   return 0;
 }
@@ -127,14 +140,21 @@ int polymorphicFun(polyVarInterface_t x) // Example how to handle all the varian
 
 void useMyCrap(void)
 {
-OOC_DOUBLE64(newVar, 0.99)
-OOC_MYSTRUCT_T(newStruct, 10, 20)
 
-  char err = 0;
-  err = polymorphicFun( newVar );
-  printf("%s\n", (err == 0) ?"ok":"error" );
-  err = polymorphicFun( newStruct );
-  printf("%s\n", (err == 0) ?"ok":"error" ); 
+  OOC_DOUBLE64(newVar, 0.99)
+    
+  OOC_MYSTRUCT_T(newStruct, 10, 20)
+    
+  OOC_UNSIGNED_CHAR8_ARRAY(new_u8array, 20, 0)
+
+  u8 u8_temp_err = 0;
+  u8_temp_err = polymorphicFun( newVar );
+  printf("%s\n", (u8_temp_err == 0) ?"ok":"error" );
+  u8_temp_err = polymorphicFun( newStruct );
+  printf("%s\n", (u8_temp_err == 0) ?"ok":"error" ); 
+  u8_temp_err = polymorphicFun( new_u8array );
+  printf("%s\n", (u8_temp_err == 0) ?"ok":"error" ); 
+
 }
 
 
