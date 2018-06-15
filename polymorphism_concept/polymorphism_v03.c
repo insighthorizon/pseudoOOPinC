@@ -93,25 +93,25 @@ int polymorphicFun(polyVarInterface_t x) // Example how to handle all the varian
       printf("This is signed char: %d\n", *(s8*)x.data);
       break;
     case TYPE_u8:
-      printf("This is unsigned char: %d\n", *(u8*)x.data);
+      printf("This is unsigned char: %u\n", *(u8*)x.data);
       break;
     case TYPE_s16:
       printf("This is signed short: %d\n", *(s16*)x.data);
       break;
     case TYPE_u16:
-      printf("This is unsigned short: %d\n", *(u16*)x.data);
+      printf("This is unsigned short: %u\n", *(u16*)x.data);
       break;
     case TYPE_s32:
       printf("This is signed int: %d\n", *(s32*)x.data);
       break;
     case TYPE_u32:
-      printf("This is unsigned int: %d\n", *(u32*)x.data);
+      printf("This is unsigned int: %u\n", *(u32*)x.data);
       break;      
     case TYPE_s64:
       printf("This is signed long long: %lld\n", *(s64*)x.data);
       break;
     case TYPE_u64:
-      printf("This is unsigned long long: %lld\n", *(u64*)x.data);
+      printf("This is unsigned long long: %llu\n", *(u64*)x.data);
       break;
     case TYPE_f32:
       printf("This is float: %f\n", *(f32*)x.data);
@@ -128,7 +128,7 @@ int polymorphicFun(polyVarInterface_t x) // Example how to handle all the varian
       printf("This is array of %d unsigned chars:\n", u32_temp_size);
       for(int i = 0; i < u32_temp_size; i++)
 	{
-	  printf("%d", ((char*)((arrayWrapper_t*)x.data)->data)[i]);
+	  printf("%c", ((u8*)((arrayWrapper_t*)x.data)->data)[i]);
 	}
       printf("\n");
       }
@@ -138,23 +138,57 @@ int polymorphicFun(polyVarInterface_t x) // Example how to handle all the varian
 }
 
 
-void useMyCrap(void)
+void useMyCrap(void) // Test of polymorphism
 {
+  OOC_SIGNED_CHAR8(mySignedChar, -33)
 
-  OOC_DOUBLE64(newVar, 0.99)
+  OOC_UNSIGNED_CHAR8(myUnsignedChar, 250)
+
+  OOC_SIGNED_SHORT16(mySignedShort, -32000)
+
+  OOC_UNSIGNED_SHORT16(myUnsignedShort, 65000)
+
+  OOC_SIGNED_INT32(mySignedInt, -2e9)
+
+  OOC_UNSIGNED_INT32(myUnsignedInt, 4e9)
+
+  OOC_SIGNED_LONGLONG64(mySignedLonglong, -9e18)
+
+  OOC_UNSIGNED_LONGLONG64(myUnsignedLonglong, 18e18)
+
+  OOC_FLOAT32(myFloat, 87894.4987e10)
+    
+  OOC_DOUBLE64(newVar, 8977.975e20)
     
   OOC_MYSTRUCT_T(newStruct, 10, 20)
     
-  OOC_UNSIGNED_CHAR8_ARRAY(new_u8array, 20, 0)
+  OOC_UNSIGNED_CHAR8_ARRAY(new_u8array, 4, "ahoj")
 
   u8 u8_temp_err = 0;
+  u8_temp_err = polymorphicFun( mySignedChar );
+  printf("%s\n", (u8_temp_err == 0) ?"ok":"error" );
+  u8_temp_err = polymorphicFun( myUnsignedChar );
+  printf("%s\n", (u8_temp_err == 0) ?"ok":"error" );
+  u8_temp_err = polymorphicFun( mySignedShort );
+  printf("%s\n", (u8_temp_err == 0) ?"ok":"error" );
+  u8_temp_err = polymorphicFun( myUnsignedShort );
+  printf("%s\n", (u8_temp_err == 0) ?"ok":"error" );
+  u8_temp_err = polymorphicFun( mySignedInt );
+  printf("%s\n", (u8_temp_err == 0) ?"ok":"error" );
+  u8_temp_err = polymorphicFun( myUnsignedInt );
+  printf("%s\n", (u8_temp_err == 0) ?"ok":"error" );
+  u8_temp_err = polymorphicFun( mySignedLonglong );
+  printf("%s\n", (u8_temp_err == 0) ?"ok":"error" );
+  u8_temp_err = polymorphicFun( myUnsignedLonglong );
+  printf("%s\n", (u8_temp_err == 0) ?"ok":"error" );
+  u8_temp_err = polymorphicFun( myFloat );
+  printf("%s\n", (u8_temp_err == 0) ?"ok":"error" );
   u8_temp_err = polymorphicFun( newVar );
   printf("%s\n", (u8_temp_err == 0) ?"ok":"error" );
   u8_temp_err = polymorphicFun( newStruct );
   printf("%s\n", (u8_temp_err == 0) ?"ok":"error" ); 
   u8_temp_err = polymorphicFun( new_u8array );
   printf("%s\n", (u8_temp_err == 0) ?"ok":"error" ); 
-
 }
 
 
