@@ -43,6 +43,8 @@ typedef struct {
   typeIdentifier_t type;
   int *data;
 }polyVarInterface_t;
+/* Software stack for dynamic types */
+s32 s32array_publicSWstack[2000] = {0}; // Automatic storage for polymorphic variables (class instances)
 /* Macros to define and initialize polymorphic variables */
 #define OOC_SIGNED_CHAR8(NAME, INIT_VALUE) \
   s8 s8_polyVar_storage_##NAME = INIT_VALUE; \
