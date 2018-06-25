@@ -2,7 +2,6 @@
   gcc -z execstack main.c */
   
 #include <stdio.h>
-#include <sys/mman.h>
 
 typedef struct{
   int a;
@@ -31,7 +30,7 @@ int main(void)
 
 
 
-  for (int i = 0; i <= (size+2); i++)
+  for (int i = 0; i <= size; i++)
     {
       storage[i] = startAdd[i];
       printf("%d\n", i);
