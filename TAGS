@@ -1,0 +1,265 @@
+
+object.c,472
+#define __PSEUDO_OBJECT_C__6,190
+#undef __PSEUDO_OBJECT_C__8,299
+  int value;27,1001
+  int cumulative;28,1014
+} private_container;29,1032
+static private_container MY_object_private_container 31,1054
+#define OBJECT_INSTANCE 34,1138
+#define GET_PRIV(35,1172
+#define INDIRECT_GET_PRIV(36,1216
+#define PRIV 37,1257
+object_t MY_object 42,1384
+void printInteger(45,1504
+int scanInteger(50,1557
+void MY_objectInsertValue(58,1674
+void MY_objectDisplayValue(67,1846
+
+main.c,16
+int main(6,101
+
+object.h,248
+#define object_h4,57
+#define OBJECT_TYPE_NAME 5,74
+#define COMMA 7,139
+  int wFlag;12,227
+  int rFlag;13,276
+  void (*insertValue)insertValue15,366
+  void (*displayValue)displayValue16,395
+} object_t;17,427
+#undef OBJECT_TYPE_NAME27,583
+
+private_encapsulation_concept/size_test.c,195
+  char affs;10,129
+  char wfwe;11,142
+  char wre;12,155
+  float wefwef;13,167
+  float wefweff;14,183
+  double wfwefw;15,200
+  void (*func)func16,217
+} mystruct_t;17,239
+int main(20,255
+
+private_encapsulation_concept/main_test.c,15
+int main(6,59
+
+private_encapsulation_concept/obj1.c,1483
+#define __OBJ1_C__ 4,44
+#undef __OBJ1_C__6,137
+obj1_publics_T obj1_instance1 9,227
+obj1_publics_T obj1_instance2 16,571
+obj1_privates_T *obj1_inst1_privatesACCESS(obj1_inst1_privatesACCESS26,1002
+obj1_privates_T *obj1_inst2_privatesACCESS(obj1_inst2_privatesACCESS31,1171
+static void obj1_giveInfo_privFun(38,1379
+static void privWrapperObj1_inst1_giveInfo(48,1844
+static void privWrapperObj1_inst2_giveInfo(54,2062
+void obj1_setVal1(64,2415
+void obj1_setVal2(68,2559
+void obj1_setVal3(72,2703
+int obj1_getVal1(76,2847
+int obj1_getVal2(80,2947
+int obj1_getVal3(84,3047
+void obj1_usePubVars1(88,3147
+int obj1_usePubVars2(92,3291
+void obj1_usePrivFun(96,3395
+void pubWrapperObj1_inst1_setVal1(102,3573
+void pubWrapperObj1_inst1_setVal2(108,3781
+void pubWrapperObj1_inst1_setVal3(114,3989
+int pubWrapperObj1_inst1_getVal1(120,4197
+int pubWrapperObj1_inst1_getVal2(126,4396
+int pubWrapperObj1_inst1_getVal3(132,4595
+void pubWrapperObj1_inst1_usePubVars1(138,4794
+int pubWrapperObj1_inst1_usePubVars2(144,5006
+void pubWrapperObj1_inst1_usePrivFun(150,5213
+void pubWrapperObj1_inst2_setVal1(157,5425
+void pubWrapperObj1_inst2_setVal2(163,5633
+void pubWrapperObj1_inst2_setVal3(169,5841
+int pubWrapperObj1_inst2_getVal1(175,6049
+int pubWrapperObj1_inst2_getVal2(181,6248
+int pubWrapperObj1_inst2_getVal3(187,6447
+void pubWrapperObj1_inst2_usePubVars1(193,6646
+int pubWrapperObj1_inst2_usePubVars2(199,6858
+void pubWrapperObj1_inst2_usePrivFun(205,7065
+
+private_encapsulation_concept/dynamic_instantiation/main.c,1502
+int SWstack[SWstack4,40
+int *SWstack_pointer SWstack_pointer5,65
+  int *pubVar1;pubVar110,179
+  int (*privVar1getter)privVar1getter11,195
+  void (*privVar1setter)privVar1setter12,226
+}className1_publicObjectMembers_t;className1_publicObjectMembers_t13,257
+  int pubVar1;15,308
+}className1_publicData_t;className1_publicData_t16,323
+  int privVar1;18,365
+}className1_privateData_t;className1_privateData_t19,381
+  int *pubVar1;pubVar122,454
+  int (*privVar1getter)privVar1getter23,470
+  void (*privVar1setter)privVar1setter24,501
+}className2_publicObjectMembers_t;className2_publicObjectMembers_t25,532
+  int pubVar1;27,583
+}className2_publicData_t;className2_publicData_t28,598
+  int privVar1;30,640
+}className2_privateData_t;className2_privateData_t31,656
+  CLASS_NAME1 35,742
+  CLASS_NAME2,36,764
+}className_t;className_t37,779
+  int *publicData;publicData40,830
+  int *privateData;privateData41,849
+}instanceInterface_t;instanceInterface_t42,869
+int *objectPublicContentPointer;objectPublicContentPointer45,1020
+int *objectPrivateContentPointer;objectPrivateContentPointer46,1053
+int className1privVar1getter(49,1115
+void className1privVar1setter(54,1302
+int className2privVar1getter(60,1515
+void className2privVar1setter(65,1704
+className1_publicObjectMembers_t className1(74,1924
+className2_publicObjectMembers_t className2(84,2428
+#define INSTANTIATE_CLASS1(96,2963
+#define INSTANTIATE_CLASS2(101,3389
+void tryIt(108,3814
+int main(161,5982
+
+private_encapsulation_concept/obj1.h,523
+#define __OBJ1_H__3,43
+  int pubVar1;8,220
+  void (*setVal1)setVal110,272
+  void (*setVal2)setVal211,300
+  void (*setVal3)setVal312,328
+  int (*getVal1)getVal113,356
+  int (*getVal2)getVal214,380
+  int (*getVal3)getVal315,404
+  void (*usePubVars1)usePubVars116,428
+  int (*usePubVars2)usePubVars217,458
+  void (*usePrivFun)usePrivFun18,486
+}obj1_publics_T;obj1_publics_T19,514
+  int value1;24,670
+  int value2;25,684
+  int value3;26,698
+  void (*giveInfo)giveInfo28,750
+} obj1_privates_T;29,776
+
+pp_magic_concept/magicTest.c,314
+static float value1 3,22
+static float value2 4,48
+#define COMMA 6,76
+#define FUNC_PROTOTYPE(8,95
+#define MAGIC_BUILD(13,259
+#define SKIP_BODY(14,299
+#define CREATE_BODY(15,323
+#define PASTE(18,420
+#define MAGIC_POINTER(20,573
+#define INSTANTIATE_POINTER(27,735
+FUNC_PROTOTYPE(INSTANTIATE_POINTER24,662
+
+inheritance_concept/test.h,153
+#undef COMMA20,373
+#define COMMA 21,386
+#define INHERIT_TEST__(25,517
+#define BUILDER_TEST__(30,666
+#define BUILDER(36,813
+#define MORPHER1(37,884
+
+inheritance_concept/macros.h,50
+#define COMMA 1,0
+#define BUILDER_MACROS__(2,16
+
+inheritance_concept/writers.h,63
+#define INHERIT_WRITERS__(1,0
+#define BUILDER_WRITERS__(4,54
+
+polymorphism_concept/function_copy.c,125
+  int a;7,94
+  int b;8,103
+} struct_t;9,112
+void tiskni(11,125
+void seeMe(13,163
+void end_mark(20,251
+int main(22,276
+
+polymorphism_concept/wrappers.c,851
+static char storage1[storage113,228
+static long storage1ptr 14,262
+  int a;17,308
+  int b;18,317
+}myStruct_t;myStruct_t19,326
+void (*loader(loader22,341
+myStruct_t myStruct_a 37,684
+myStruct_t myStruct_b 38,727
+void fun1(40,771
+void fun2(44,844
+void wrapper(49,920
+void endMark(55,1020
+char wrapperCode[wrapperCode57,1069
+#define CODE_SIZE 61,1272
+#define FUN_PTR_POS 62,1299
+#define DATA_PTR_POS 63,1328
+void (*binaryLoader(binaryLoader66,1421
+char win32wrapperCode[win32wrapperCode87,2063
+#define win32_CODE_SIZE 92,2249
+#define win32_FUN_PTR_POS 93,2282
+#define win32_DATA_PTR_POS 94,2316
+int main(96,2353
+#define WRAPPER 116,2924
+#define CODE_SIZE_X 117,2957
+#define FUNPTR 118,2993
+#define DATAPTR 119,3026
+#define WRAPPER 121,3067
+#define CODE_SIZE_X 122,3095
+#define FUNPTR 123,3125
+#define DATAPTR 124,3152
+
+polymorphism_concept/array_serialization.c,16
+int main(7,161
+
+polymorphism_concept/polymorphism_v03.c,1413
+typedef signed char s8;5,62
+typedef unsigned char u8;6,86
+typedef signed short s16;7,112
+typedef unsigned short u16;8,138
+typedef signed int s32;9,166
+typedef unsigned int u32;10,190
+typedef signed long long s64;11,216
+typedef unsigned long long u64;12,246
+typedef float f32;13,278
+typedef double f64;14,297
+  int a;18,553
+  int b;19,562
+}myStruct_t;myStruct_t20,571
+  int size;22,601
+  int *data;data23,613
+}arrayWrapper_t;arrayWrapper_t24,676
+  TYPE_s8 27,737
+  TYPE_u8,28,867
+  TYPE_s16,29,878
+  TYPE_u16,30,890
+  TYPE_s32,31,902
+  TYPE_u32,32,914
+  TYPE_s64,33,926
+  TYPE_u64,34,938
+  TYPE_f32,35,950
+  TYPE_f64,36,962
+  TYPE_myStruct_t,38,990
+  TYPE_u8array_t,39,1009
+}typeIdentifier_t;typeIdentifier_t40,1027
+  typeIdentifier_t type;43,1112
+  int *data;data44,1137
+}polyVarInterface_t;polyVarInterface_t45,1150
+s32 s32array_publicSWstack[s32array_publicSWstack47,1210
+#define OOC_SIGNED_CHAR8(49,1375
+#define OOC_UNSIGNED_CHAR8(52,1562
+#define OOC_SIGNED_SHORT16(55,1751
+#define OOC_UNSIGNED_SHORT16(58,1944
+#define OOC_SIGNED_INT32(61,2139
+#define OOC_UNSIGNED_INT32(64,2330
+#define OOC_SIGNED_LONGLONG64(67,2523
+#define OOC_UNSIGNED_LONGLONG64(70,2719
+#define OOC_FLOAT32(73,2917
+#define OOC_DOUBLE64(76,3103
+#define OOC_MYSTRUCT_T(79,3293
+#define OOC_UNSIGNED_CHAR8_ARRAY(82,3597
+int polymorphicFun(87,3996
+void useMyCrap(143,5560
+int main(199,7389
+
+inheritance_concept/main.c,0
