@@ -1,23 +1,42 @@
-/* Include to get acces to the object */
-#include "object.h"
 #include <stdio.h>
-#include <stdlib.h>
+#include "class1.h"
 
-int main()
+void Fun1(void)
 {
-  MY_object.displayValue();
-  printf("%d %d\n", MY_object.wFlag, MY_object.rFlag);
+  static class1_t myInst1 = {.pubVar1=0,.pubVar2=0,.dontuseoutside.privVar1=0,.dontuseoutside.privVar2=0};
 
-  for(int i = 4; i > 0; i--)
-  {
-  MY_object.insertValue();
-  printf("%d %d\n", MY_object.wFlag, MY_object.rFlag);
-  MY_object.displayValue();
-  printf("%d %d\n", MY_object.wFlag, MY_object.rFlag);
-  printf("-------------------------------------\n");
-  }
+  printf("Pub11: %d\n", myInst1.pubVar1);
+  printf("Pub12: %d\n", myInst1.pubVar2);
 
-  system("pause");
+  class1_m(&myInst1).print_privVar1();
+  class1_m(&myInst1).print_privVar2();
+  class1_m(&myInst1).set_privVars(10, 20);
+  myInst1.pubVar1 += 1;
   
+  return;
+}
+
+
+
+int main(int argc, char **argv)
+{
+  class1_t myInst = {.pubVar1=3,.pubVar2=4,.dontuseoutside.privVar1=1,.dontuseoutside.privVar2=2};
+
+  printf("Pub1: %d\n", myInst.pubVar1);
+  printf("Pub2: %d\n", myInst.pubVar2);
+
+  class1_m(&myInst).print_privVar1();
+  class1_m(&myInst).print_privVar2();
+
+  class1_m(&myInst).set_privVars(10, 20);
+  
+  class1_m(&myInst).print_privVar1();
+  class1_m(&myInst).print_privVar2();
+
+  Fun1();
+  Fun1();
+  Fun1();
+
+
   return 0;
 }
