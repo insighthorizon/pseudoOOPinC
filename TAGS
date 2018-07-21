@@ -1,35 +1,4 @@
 
-object.c,472
-#define __PSEUDO_OBJECT_C__6,190
-#undef __PSEUDO_OBJECT_C__8,299
-  int value;27,1001
-  int cumulative;28,1014
-} private_container;29,1032
-static private_container MY_object_private_container 31,1054
-#define OBJECT_INSTANCE 34,1138
-#define GET_PRIV(35,1172
-#define INDIRECT_GET_PRIV(36,1216
-#define PRIV 37,1257
-object_t MY_object 42,1384
-void printInteger(45,1504
-int scanInteger(50,1557
-void MY_objectInsertValue(58,1674
-void MY_objectDisplayValue(67,1846
-
-main.c,16
-int main(6,101
-
-object.h,248
-#define object_h4,57
-#define OBJECT_TYPE_NAME 5,74
-#define COMMA 7,139
-  int wFlag;12,227
-  int rFlag;13,276
-  void (*insertValue)insertValue15,366
-  void (*displayValue)displayValue16,395
-} object_t;17,427
-#undef OBJECT_TYPE_NAME27,583
-
 private_encapsulation_concept/size_test.c,195
   char affs;10,129
   char wfwe;11,142
@@ -139,6 +108,35 @@ private_encapsulation_concept/obj1.h,523
   void (*giveInfo)giveInfo28,750
 } obj1_privates_T;29,776
 
+final_nomacros/main.c,33
+void Fun1(4,41
+int main(21,419
+
+final_nomacros/myClass.c,277
+#define _MYCLASS_C_1,0
+#undef _MYCLASS_C_3,41
+static myClass_t *instPtrTmp instPtrTmp10,122
+void print_privVar1(13,244
+void print_privVar2(18,336
+void set_privVars(23,428
+static int get_privVar1(31,713
+static int get_privVar2(35,795
+myClassMethods_t myClass_m(41,898
+
+final_nomacros/myClass.h,395
+#define _MYCLASS_H_2,20
+  int privVar1;5,57
+  int privVar2;6,171
+}myClassPriv_t;myClassPriv_t7,187
+  int pubVar1;9,220
+  int pubVar2;10,269
+  myClassPriv_t dontuseoutside;11,284
+}myClass_t;myClass_t12,357
+  void (*print_privVar1)print_privVar118,560
+  void (*print_privVar2)print_privVar219,592
+  void (*set_privVars)set_privVars20,624
+}myClassMethods_t;myClassMethods_t21,658
+
 pp_magic_concept/magicTest.c,314
 static float value1 3,22
 static float value2 4,48
@@ -151,6 +149,45 @@ static float value2 4,48
 #define MAGIC_POINTER(20,573
 #define INSTANTIATE_POINTER(27,735
 FUNC_PROTOTYPE(INSTANTIATE_POINTER24,662
+
+final_withmacros/main.c,33
+void Fun1(6,66
+int main(24,399
+
+final_withmacros/class1.c,123
+#define _CLASS1_C_3,63
+#undef _CLASS1_C_5,102
+static CLASS_T *instPtrTmp instPtrTmp14,269
+PUBLIC_FUNCTIONS_DEF(17,336
+
+final_withmacros/class1.h,787
+#define _CLASS1_H_2,19
+#define COMMA 5,86
+#define NONE6,156
+#define PASTE(7,169
+#define INDIR_PASTE(8,195
+#define CLASS_NAME 13,235
+#define PUBLIC_DATA_DEF	15,425
+#define PRIVATE_DATA_DEF	19,532
+#define PUBLIC_FUNCTIONS_DEF(23,635
+#define PRIVATE_FUNCTIONS_DEF(36,1149
+#define PRIVATES 44,1407
+#define CLASS_T 45,1439
+#define CLASS_PRIV_T 46,1483
+#define BUILD_PUBLIC_DATA	47,1537
+#define BUILD_PRIVATE_DATA	52,1663
+#define PRIV_HEADER(57,1771
+#define PUB_HEADER(58,1814
+#define TAKE_NAME(59,1849
+#define MAKE_POINTER(60,1878
+#define FUN_BODY(61,1918
+#define SEMICOLON(62,1942
+#define JUST_NAME(63,1965
+#define CLASS_METHODS_T 65,1987
+#define CLASS_M 66,2046
+  PUBLIC_FUNCTIONS_DEF(77,2327
+}CLASS_METHODS_T;CLASS_METHODS_T78,2381
+PUBLIC_FUNCTIONS_DEF(82,2491
 
 inheritance_concept/test.h,153
 #undef COMMA20,373

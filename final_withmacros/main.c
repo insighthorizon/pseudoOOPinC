@@ -1,10 +1,13 @@
 #include <stdio.h>
 #include "class1.h"
 
+// Just testing for bugs
+
 void Fun1(void)
 {
-  static class1_t myInst1 = {.pubVar1=0,.pubVar2=0,.dontuseoutside.privVar1=0,.dontuseoutside.privVar2=0};
-
+  // Instantiation
+  static class1_t myInst1 = {0, 0, {0, 0} };
+  
   printf("Pub11: %d\n", myInst1.pubVar1);
   printf("Pub12: %d\n", myInst1.pubVar2);
 
@@ -20,7 +23,8 @@ void Fun1(void)
 
 int main(int argc, char **argv)
 {
-  class1_t myInst = {.pubVar1=3,.pubVar2=4,.dontuseoutside.privVar1=1,.dontuseoutside.privVar2=2};
+  // Instantiation
+  class1_t myInst = {3, 4, {1, 2} };
 
   printf("Pub1: %d\n", myInst.pubVar1);
   printf("Pub2: %d\n", myInst.pubVar2);
