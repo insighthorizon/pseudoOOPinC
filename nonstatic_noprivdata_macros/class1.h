@@ -1,6 +1,28 @@
 #ifndef _CLASS1_H_
 #define _CLASS1_H_
 
+// nasty redefinition
+#undef COMMA
+#undef NONE
+#undef PASTE
+#undef INDIR_PASTE
+#undef CLASS_NAME
+#undef OBJECT_DATA_DEF
+#undef UDER_FUNCTIONS_DEF
+#undef HIDDEN_FUNCTIONS_DEF
+#undef CLASS_T
+#undef BUILD_OBJECT_TYPE
+#undef HIDD_HEADER
+#undef USER_HEADER
+#undef TAKE_NAME
+#undef MAKE_POINTER
+#undef FUN_BODY
+#undef SEMICOLON
+#undef JUST_NAME
+#undef CLASS_METHODS_T
+#undef CLASS_M
+
+
 #define COMMA , // use for separating multiple arguments of functions
 #define NONE
 #define PASTE(X,Y) X ## Y
@@ -50,7 +72,6 @@
 #define CLASS_METHODS_T INDIR_PASTE(CLASS_NAME, Methods_t)
 #define CLASS_M INDIR_PASTE(CLASS_NAME, _m)
 
-#endif
 
 BUILD_OBJECT_TYPE
 
