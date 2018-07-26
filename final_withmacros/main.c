@@ -1,20 +1,20 @@
 #include <stdio.h>
 #include "class1.h"
 
-// Just testing for bugs
+/* you should never access object data dirrectly,
+   always use them only through object methods  */
 
 void Fun1(void)
 {
-  // Instantiation
-  static class1_t myInst1 = {0, 0, {0, 0} };
-  
-  printf("Pub11: %d\n", myInst1.pubVar1);
-  printf("Pub12: %d\n", myInst1.pubVar2);
+  static class1_t myInst1 = {.var1=0,.var2=0};
 
-  class1_m(&myInst1).print_privVar1();
-  class1_m(&myInst1).print_privVar2();
-  class1_m(&myInst1).set_privVars(10, 20);
-  myInst1.pubVar1 += 1;
+  printf("var11: %d\n", myInst1.var1);
+  printf("var12: %d\n", myInst1.var2);
+
+  class1_m(&myInst1).printVar1();
+  class1_m(&myInst1).printVar2();
+  myInst1.var1 += 1;
+  myInst1.var2 += 1;
   
   return;
 }
@@ -23,19 +23,18 @@ void Fun1(void)
 
 int main(int argc, char **argv)
 {
-  // Instantiation
-  class1_t myInst = {3, 4, {1, 2} };
+  class1_t myInst = {.var1=3,.var2=4};
 
-  printf("Pub1: %d\n", myInst.pubVar1);
-  printf("Pub2: %d\n", myInst.pubVar2);
+  printf("1: %d\n", myInst.var1);
+  printf("2: %d\n", myInst.var2);
 
-  class1_m(&myInst).print_privVar1();
-  class1_m(&myInst).print_privVar2();
+  class1_m(&myInst).printVar1();
+  class1_m(&myInst).printVar2();
 
-  class1_m(&myInst).set_privVars(10, 20);
+  class1_m(&myInst).setVars(10, 20);
   
-  class1_m(&myInst).print_privVar1();
-  class1_m(&myInst).print_privVar2();
+  class1_m(&myInst).printVar1();
+  class1_m(&myInst).printVar2();
 
   Fun1();
   Fun1();

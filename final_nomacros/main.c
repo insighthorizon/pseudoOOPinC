@@ -1,17 +1,20 @@
 #include <stdio.h>
 #include "myClass.h"
 
+/* you should never access object data dirrectly,
+   always use them only through object methods  */
+
 void Fun1(void)
 {
-  static myClass_t myInst1 = {.pubVar1=0,.pubVar2=0,.dontuseoutside.privVar1=0,.dontuseoutside.privVar2=0};
+  static myClass_t myInst1 = {.var1=0,.var2=0};
 
-  printf("Pub11: %d\n", myInst1.pubVar1);
-  printf("Pub12: %d\n", myInst1.pubVar2);
+  printf("var11: %d\n", myInst1.var1);
+  printf("var12: %d\n", myInst1.var2);
 
-  myClass_m(&myInst1).print_privVar1();
-  myClass_m(&myInst1).print_privVar2();
-  myClass_m(&myInst1).set_privVars(10, 20);
-  myInst1.pubVar1 += 1;
+  myClass_m(&myInst1).printVar1();
+  myClass_m(&myInst1).printVar2();
+  myInst1.var1 += 1;
+  myInst1.var2 += 1;
   
   return;
 }
@@ -20,18 +23,18 @@ void Fun1(void)
 
 int main(int argc, char **argv)
 {
-  myClass_t myInst = {.pubVar1=3,.pubVar2=4,.dontuseoutside.privVar1=1,.dontuseoutside.privVar2=2};
+  myClass_t myInst = {.var1=3,.var2=4};
 
-  printf("Pub1: %d\n", myInst.pubVar1);
-  printf("Pub2: %d\n", myInst.pubVar2);
+  printf("1: %d\n", myInst.var1);
+  printf("2: %d\n", myInst.var2);
 
-  myClass_m(&myInst).print_privVar1();
-  myClass_m(&myInst).print_privVar2();
+  myClass_m(&myInst).printVar1();
+  myClass_m(&myInst).printVar2();
 
-  myClass_m(&myInst).set_privVars(10, 20);
+  myClass_m(&myInst).setVars(10, 20);
   
-  myClass_m(&myInst).print_privVar1();
-  myClass_m(&myInst).print_privVar2();
+  myClass_m(&myInst).printVar1();
+  myClass_m(&myInst).printVar2();
 
   Fun1();
   Fun1();
