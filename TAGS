@@ -1,9 +1,9 @@
 
-dynamic_nomacros/main.c,34
+nonstatic_noprivdata/main.c,34
 void Fun1(7,143
 int main(24,419
 
-dynamic_nomacros/myClass.c,252
+nonstatic_noprivdata/myClass.c,252
 #define _MYCLASS_C_1,0
 #undef _MYCLASS_C_3,41
 static myClass_t *instPtrTmp instPtrTmp10,122
@@ -14,7 +14,7 @@ static int getVar1(33,753
 static int getVar2(37,809
 myClassMethods_t myClass_m(43,886
 
-dynamic_nomacros/myClass.h,236
+nonstatic_noprivdata/myClass.h,236
 #define _MYCLASS_H_2,20
   int var1;5,58
   int var2;6,85
@@ -24,37 +24,61 @@ dynamic_nomacros/myClass.h,236
   void (*setVars)setVars15,354
 }myClassMethods_t;myClassMethods_t16,383
 
-dynamic_withmacros/main.c,34
+abandoned_macroed_nonstatic/main.c,34
 void Fun1(7,142
 int main(24,415
 
-dynamic_withmacros/class1.c,121
+abandoned_macroed_nonstatic/class1.c,121
 #define _CLASS1_C_3,63
 #undef _CLASS1_C_5,102
 static CLASS_T *instPtrTmp instPtrTmp13,199
 USER_FUNCTIONS_DEF(16,266
 
-dynamic_withmacros/class1.h,655
+abandoned_macroed_nonstatic/class1.h,654
 #define _CLASS1_H_2,19
-#define COMMA 5,86
-#define NONE6,156
-#define PASTE(7,169
-#define INDIR_PASTE(8,195
-#define CLASS_NAME 12,234
-#define OBJECT_DATA_DEF	13,288
-#define USER_FUNCTIONS_DEF(16,351
-#define HIDDEN_FUNCTIONS_DEF(29,795
-#define CLASS_T 37,1024
-#define BUILD_OBJECT_TYPE	38,1068
-#define HIDD_HEADER(43,1162
-#define USER_HEADER(44,1205
-#define TAKE_NAME(45,1241
-#define MAKE_POINTER(46,1270
-#define FUN_BODY(47,1310
-#define SEMICOLON(48,1334
-#define JUST_NAME(49,1357
-#define CLASS_METHODS_T 51,1379
-#define CLASS_M 52,1438
-  USER_FUNCTIONS_DEF(62,1700
-}CLASS_METHODS_T;CLASS_METHODS_T63,1752
-USER_FUNCTIONS_DEF(67,1862
+#define COMMA 4,39
+#define NONE5,109
+#define PASTE(6,122
+#define INDIR_PASTE(7,148
+#define CLASS_NAME 11,187
+#define OBJECT_DATA_DEF	12,241
+#define USER_FUNCTIONS_DEF(15,304
+#define HIDDEN_FUNCTIONS_DEF(28,748
+#define CLASS_T 36,977
+#define BUILD_OBJECT_TYPE	37,1021
+#define HIDD_HEADER(42,1115
+#define USER_HEADER(43,1158
+#define TAKE_NAME(44,1194
+#define MAKE_POINTER(45,1223
+#define FUN_BODY(46,1263
+#define SEMICOLON(47,1287
+#define JUST_NAME(48,1310
+#define CLASS_METHODS_T 50,1332
+#define CLASS_M 51,1391
+  USER_FUNCTIONS_DEF(60,1646
+}CLASS_METHODS_T;CLASS_METHODS_T61,1698
+USER_FUNCTIONS_DEF(65,1808
+
+static_singleton/main.c,15
+int main(5,45
+
+static_singleton/singleton1.c,255
+#define _SINGLETON1_C_1,0
+#undef _SINGLETON1_C_3,47
+singleton1_t mySingleton 9,159
+static int priv1 12,329
+static int priv2 13,351
+void pubFun1(15,374
+void pubFun2(21,466
+void pubFun3(27,558
+static int getPriv1(36,682
+static int getPriv2(40,728
+
+static_singleton/singleton1.h,201
+#define _SINGLETON1_H_2,23
+  int pubVar1;5,129
+  int pubVar2;6,144
+  void (*pubFun1)pubFun17,159
+  void (*pubFun2)pubFun28,184
+  void (*pubFun3)pubFun39,209
+}singleton1_t;singleton1_t10,238
