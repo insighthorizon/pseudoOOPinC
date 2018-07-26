@@ -1,302 +1,60 @@
 
-private_encapsulation_concept/size_test.c,195
-  char affs;10,129
-  char wfwe;11,142
-  char wre;12,155
-  float wefwef;13,167
-  float wefweff;14,183
-  double wfwefw;15,200
-  void (*func)func16,217
-} mystruct_t;17,239
-int main(20,255
+dynamic_nomacros/main.c,34
+void Fun1(7,143
+int main(24,419
 
-private_encapsulation_concept/main_test.c,15
-int main(6,59
-
-private_encapsulation_concept/obj1.c,1483
-#define __OBJ1_C__ 4,44
-#undef __OBJ1_C__6,137
-obj1_publics_T obj1_instance1 9,227
-obj1_publics_T obj1_instance2 16,571
-obj1_privates_T *obj1_inst1_privatesACCESS(obj1_inst1_privatesACCESS26,1002
-obj1_privates_T *obj1_inst2_privatesACCESS(obj1_inst2_privatesACCESS31,1171
-static void obj1_giveInfo_privFun(38,1379
-static void privWrapperObj1_inst1_giveInfo(48,1844
-static void privWrapperObj1_inst2_giveInfo(54,2062
-void obj1_setVal1(64,2415
-void obj1_setVal2(68,2559
-void obj1_setVal3(72,2703
-int obj1_getVal1(76,2847
-int obj1_getVal2(80,2947
-int obj1_getVal3(84,3047
-void obj1_usePubVars1(88,3147
-int obj1_usePubVars2(92,3291
-void obj1_usePrivFun(96,3395
-void pubWrapperObj1_inst1_setVal1(102,3573
-void pubWrapperObj1_inst1_setVal2(108,3781
-void pubWrapperObj1_inst1_setVal3(114,3989
-int pubWrapperObj1_inst1_getVal1(120,4197
-int pubWrapperObj1_inst1_getVal2(126,4396
-int pubWrapperObj1_inst1_getVal3(132,4595
-void pubWrapperObj1_inst1_usePubVars1(138,4794
-int pubWrapperObj1_inst1_usePubVars2(144,5006
-void pubWrapperObj1_inst1_usePrivFun(150,5213
-void pubWrapperObj1_inst2_setVal1(157,5425
-void pubWrapperObj1_inst2_setVal2(163,5633
-void pubWrapperObj1_inst2_setVal3(169,5841
-int pubWrapperObj1_inst2_getVal1(175,6049
-int pubWrapperObj1_inst2_getVal2(181,6248
-int pubWrapperObj1_inst2_getVal3(187,6447
-void pubWrapperObj1_inst2_usePubVars1(193,6646
-int pubWrapperObj1_inst2_usePubVars2(199,6858
-void pubWrapperObj1_inst2_usePrivFun(205,7065
-
-private_encapsulation_concept/dynamic_instantiation/main.c,1502
-int SWstack[SWstack4,40
-int *SWstack_pointer SWstack_pointer5,65
-  int *pubVar1;pubVar110,179
-  int (*privVar1getter)privVar1getter11,195
-  void (*privVar1setter)privVar1setter12,226
-}className1_publicObjectMembers_t;className1_publicObjectMembers_t13,257
-  int pubVar1;15,308
-}className1_publicData_t;className1_publicData_t16,323
-  int privVar1;18,365
-}className1_privateData_t;className1_privateData_t19,381
-  int *pubVar1;pubVar122,454
-  int (*privVar1getter)privVar1getter23,470
-  void (*privVar1setter)privVar1setter24,501
-}className2_publicObjectMembers_t;className2_publicObjectMembers_t25,532
-  int pubVar1;27,583
-}className2_publicData_t;className2_publicData_t28,598
-  int privVar1;30,640
-}className2_privateData_t;className2_privateData_t31,656
-  CLASS_NAME1 35,742
-  CLASS_NAME2,36,764
-}className_t;className_t37,779
-  int *publicData;publicData40,830
-  int *privateData;privateData41,849
-}instanceInterface_t;instanceInterface_t42,869
-int *objectPublicContentPointer;objectPublicContentPointer45,1020
-int *objectPrivateContentPointer;objectPrivateContentPointer46,1053
-int className1privVar1getter(49,1115
-void className1privVar1setter(54,1302
-int className2privVar1getter(60,1515
-void className2privVar1setter(65,1704
-className1_publicObjectMembers_t className1(74,1924
-className2_publicObjectMembers_t className2(84,2428
-#define INSTANTIATE_CLASS1(96,2963
-#define INSTANTIATE_CLASS2(101,3389
-void tryIt(108,3814
-int main(161,5982
-
-private_encapsulation_concept/obj1.h,523
-#define __OBJ1_H__3,43
-  int pubVar1;8,220
-  void (*setVal1)setVal110,272
-  void (*setVal2)setVal211,300
-  void (*setVal3)setVal312,328
-  int (*getVal1)getVal113,356
-  int (*getVal2)getVal214,380
-  int (*getVal3)getVal315,404
-  void (*usePubVars1)usePubVars116,428
-  int (*usePubVars2)usePubVars217,458
-  void (*usePrivFun)usePrivFun18,486
-}obj1_publics_T;obj1_publics_T19,514
-  int value1;24,670
-  int value2;25,684
-  int value3;26,698
-  void (*giveInfo)giveInfo28,750
-} obj1_privates_T;29,776
-
-final_nomacros/main.c,33
-void Fun1(4,41
-int main(21,419
-
-final_nomacros/myClass.c,277
+dynamic_nomacros/myClass.c,252
 #define _MYCLASS_C_1,0
 #undef _MYCLASS_C_3,41
 static myClass_t *instPtrTmp instPtrTmp10,122
-void print_privVar1(13,244
-void print_privVar2(18,336
-void set_privVars(23,428
-static int get_privVar1(31,713
-static int get_privVar2(35,795
-myClassMethods_t myClass_m(41,898
+void printVar1(15,367
+void printVar2(20,445
+void setVars(25,523
+static int getVar1(33,753
+static int getVar2(37,809
+myClassMethods_t myClass_m(43,886
 
-final_nomacros/myClass.h,395
+dynamic_nomacros/myClass.h,236
 #define _MYCLASS_H_2,20
-  int privVar1;5,57
-  int privVar2;6,171
-}myClassPriv_t;myClassPriv_t7,187
-  int pubVar1;9,220
-  int pubVar2;10,269
-  myClassPriv_t dontuseoutside;11,284
-}myClass_t;myClass_t12,357
-  void (*print_privVar1)print_privVar118,560
-  void (*print_privVar2)print_privVar219,592
-  void (*set_privVars)set_privVars20,624
-}myClassMethods_t;myClassMethods_t21,658
+  int var1;5,58
+  int var2;6,85
+}myClass_t;myClass_t7,97
+  void (*printVar1)printVar113,300
+  void (*printVar2)printVar214,327
+  void (*setVars)setVars15,354
+}myClassMethods_t;myClassMethods_t16,383
 
-pp_magic_concept/magicTest.c,314
-static float value1 3,22
-static float value2 4,48
-#define COMMA 6,76
-#define FUNC_PROTOTYPE(8,95
-#define MAGIC_BUILD(13,259
-#define SKIP_BODY(14,299
-#define CREATE_BODY(15,323
-#define PASTE(18,420
-#define MAGIC_POINTER(20,573
-#define INSTANTIATE_POINTER(27,735
-FUNC_PROTOTYPE(INSTANTIATE_POINTER24,662
+dynamic_withmacros/main.c,34
+void Fun1(7,142
+int main(24,415
 
-final_withmacros/main.c,33
-void Fun1(6,66
-int main(24,399
-
-final_withmacros/class1.c,123
+dynamic_withmacros/class1.c,121
 #define _CLASS1_C_3,63
 #undef _CLASS1_C_5,102
-static CLASS_T *instPtrTmp instPtrTmp14,269
-PUBLIC_FUNCTIONS_DEF(17,336
+static CLASS_T *instPtrTmp instPtrTmp13,199
+USER_FUNCTIONS_DEF(16,266
 
-final_withmacros/class1.h,787
+dynamic_withmacros/class1.h,655
 #define _CLASS1_H_2,19
 #define COMMA 5,86
 #define NONE6,156
 #define PASTE(7,169
 #define INDIR_PASTE(8,195
-#define CLASS_NAME 13,235
-#define PUBLIC_DATA_DEF	15,425
-#define PRIVATE_DATA_DEF	19,532
-#define PUBLIC_FUNCTIONS_DEF(23,635
-#define PRIVATE_FUNCTIONS_DEF(36,1149
-#define PRIVATES 44,1407
-#define CLASS_T 45,1439
-#define CLASS_PRIV_T 46,1483
-#define BUILD_PUBLIC_DATA	47,1537
-#define BUILD_PRIVATE_DATA	52,1663
-#define PRIV_HEADER(57,1771
-#define PUB_HEADER(58,1814
-#define TAKE_NAME(59,1849
-#define MAKE_POINTER(60,1878
-#define FUN_BODY(61,1918
-#define SEMICOLON(62,1942
-#define JUST_NAME(63,1965
-#define CLASS_METHODS_T 65,1987
-#define CLASS_M 66,2046
-  PUBLIC_FUNCTIONS_DEF(77,2327
-}CLASS_METHODS_T;CLASS_METHODS_T78,2381
-PUBLIC_FUNCTIONS_DEF(82,2491
-
-inheritance_concept/test.h,153
-#undef COMMA20,373
-#define COMMA 21,386
-#define INHERIT_TEST__(25,517
-#define BUILDER_TEST__(30,666
-#define BUILDER(36,813
-#define MORPHER1(37,884
-
-inheritance_concept/macros.h,50
-#define COMMA 1,0
-#define BUILDER_MACROS__(2,16
-
-inheritance_concept/writers.h,63
-#define INHERIT_WRITERS__(1,0
-#define BUILDER_WRITERS__(4,54
-
-polymorphism_concept/function_copy.c,125
-  int a;7,94
-  int b;8,103
-} struct_t;9,112
-void tiskni(11,125
-void seeMe(13,163
-void end_mark(20,251
-int main(22,276
-
-polymorphism_concept/wrappers.c,851
-static char storage1[storage113,228
-static long storage1ptr 14,262
-  int a;17,308
-  int b;18,317
-}myStruct_t;myStruct_t19,326
-void (*loader(loader22,341
-myStruct_t myStruct_a 37,684
-myStruct_t myStruct_b 38,727
-void fun1(40,771
-void fun2(44,844
-void wrapper(49,920
-void endMark(55,1020
-char wrapperCode[wrapperCode57,1069
-#define CODE_SIZE 61,1272
-#define FUN_PTR_POS 62,1299
-#define DATA_PTR_POS 63,1328
-void (*binaryLoader(binaryLoader66,1421
-char win32wrapperCode[win32wrapperCode87,2063
-#define win32_CODE_SIZE 92,2249
-#define win32_FUN_PTR_POS 93,2282
-#define win32_DATA_PTR_POS 94,2316
-int main(96,2353
-#define WRAPPER 116,2924
-#define CODE_SIZE_X 117,2957
-#define FUNPTR 118,2993
-#define DATAPTR 119,3026
-#define WRAPPER 121,3067
-#define CODE_SIZE_X 122,3095
-#define FUNPTR 123,3125
-#define DATAPTR 124,3152
-
-polymorphism_concept/array_serialization.c,16
-int main(7,161
-
-polymorphism_concept/polymorphism_v03.c,1413
-typedef signed char s8;5,62
-typedef unsigned char u8;6,86
-typedef signed short s16;7,112
-typedef unsigned short u16;8,138
-typedef signed int s32;9,166
-typedef unsigned int u32;10,190
-typedef signed long long s64;11,216
-typedef unsigned long long u64;12,246
-typedef float f32;13,278
-typedef double f64;14,297
-  int a;18,553
-  int b;19,562
-}myStruct_t;myStruct_t20,571
-  int size;22,601
-  int *data;data23,613
-}arrayWrapper_t;arrayWrapper_t24,676
-  TYPE_s8 27,737
-  TYPE_u8,28,867
-  TYPE_s16,29,878
-  TYPE_u16,30,890
-  TYPE_s32,31,902
-  TYPE_u32,32,914
-  TYPE_s64,33,926
-  TYPE_u64,34,938
-  TYPE_f32,35,950
-  TYPE_f64,36,962
-  TYPE_myStruct_t,38,990
-  TYPE_u8array_t,39,1009
-}typeIdentifier_t;typeIdentifier_t40,1027
-  typeIdentifier_t type;43,1112
-  int *data;data44,1137
-}polyVarInterface_t;polyVarInterface_t45,1150
-s32 s32array_publicSWstack[s32array_publicSWstack47,1210
-#define OOC_SIGNED_CHAR8(49,1375
-#define OOC_UNSIGNED_CHAR8(52,1562
-#define OOC_SIGNED_SHORT16(55,1751
-#define OOC_UNSIGNED_SHORT16(58,1944
-#define OOC_SIGNED_INT32(61,2139
-#define OOC_UNSIGNED_INT32(64,2330
-#define OOC_SIGNED_LONGLONG64(67,2523
-#define OOC_UNSIGNED_LONGLONG64(70,2719
-#define OOC_FLOAT32(73,2917
-#define OOC_DOUBLE64(76,3103
-#define OOC_MYSTRUCT_T(79,3293
-#define OOC_UNSIGNED_CHAR8_ARRAY(82,3597
-int polymorphicFun(87,3996
-void useMyCrap(143,5560
-int main(199,7389
-
-inheritance_concept/main.c,0
+#define CLASS_NAME 12,234
+#define OBJECT_DATA_DEF	13,288
+#define USER_FUNCTIONS_DEF(16,351
+#define HIDDEN_FUNCTIONS_DEF(29,795
+#define CLASS_T 37,1024
+#define BUILD_OBJECT_TYPE	38,1068
+#define HIDD_HEADER(43,1162
+#define USER_HEADER(44,1205
+#define TAKE_NAME(45,1241
+#define MAKE_POINTER(46,1270
+#define FUN_BODY(47,1310
+#define SEMICOLON(48,1334
+#define JUST_NAME(49,1357
+#define CLASS_METHODS_T 51,1379
+#define CLASS_M 52,1438
+  USER_FUNCTIONS_DEF(62,1700
+}CLASS_METHODS_T;CLASS_METHODS_T63,1752
+USER_FUNCTIONS_DEF(67,1862
